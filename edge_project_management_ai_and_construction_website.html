@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDGE | Transforming Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #222222;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 76, 131, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 68px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0f4c83;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(11, 17, 32, 0.85), rgba(11, 17, 32, 0.95)),
+        url('1.png') center/cover;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(15, 76, 131, 0.65), rgba(34, 34, 34, 0.82));
+      z-index: 1;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding-top: 60px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: #0f4c83;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #d1d5db;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #0f4c83;
+      color: #0b1120;
+    }
+
+    .btn-primary:hover {
+      background: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      color: #9ca3af;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #0f4c83;
+      box-shadow: 0 20px 40px rgba(134,176,67,0.25);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      color: #cbd5e1;
+    }
+
+    .about {
+      background: linear-gradient(135deg, #0f4c83, #222222);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: #d1d5db;
+      margin-bottom: 1.2rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 2.2rem;
+      color: #0f4c83;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #111827;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.03);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      margin-bottom: 0.8rem;
+    }
+
+    .project-content p {
+      color: #cbd5e1;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, #0f4c83, #222222);
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 3rem;
+    }
+
+    .contact-box h2 {
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .contact-box p {
+      color: #d1d5db;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #9ca3af;
+      background: #0b1120;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-title h2,
+      .about-text h2,
+      .contact-box h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <img src="EDGE-1.png" alt="EDGE Logo">
+        </div>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Transforming Projects Through <span>Innovation, Engineering & Technology</span></h1>
+        <p>
+          EDGE delivers integrated project management, engineering, consulting, BIM, AI, and construction solutions focused on innovation, sustainability, and operational excellence.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+          <a href="#services" class="btn btn-secondary">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Integrated professional services combining technology, engineering, innovation, and project execution excellence.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Project Management</h3>
+          <p>Strategic planning, PMO services, agile delivery, scheduling, cost control, cost management, and risk management for complex projects.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3>Construction & Infrastructure</h3>
+          <p>Modern construction management solutions integrating sustainability, smart technologies, BIM, value engineering, and operational efficiency.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💰</div>
+          <h3>Cost & Commercial Management</h3>
+          <p>Feasibility studies, budgeting and estimating, tendering and procurement advisory, procurement consultancy, and contractual support.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Consulting & Engineering</h3>
+          <p>Architectural and engineering services, comprehensive design and engineering, defect diagnostics, preventive maintenance, construction document preparation, pre-acquisition reports, and project summary preparation.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>Artificial Intelligence</h3>
+          <p>AI-driven automation, predictive analytics, intelligent systems, and business transformation solutions.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Technology Solutions</h3>
+          <p>Automation, digital transformation, data analytics, smart systems, and enterprise technology integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About EDGE</h2>
+          <p>
+            EDGE specializes in project and portfolio management, consulting, engineering, cost management, and construction services with a strong focus on innovation and technology.
+          </p>
+          <p>
+            Our commitment is to deliver exceptional service and innovative, sustainable, and high-quality results while building long-term trust and value for our clients.
+          </p>
+          <a href="#contact" class="btn btn-primary">Contact Us</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <h3>18+</h3>
+            <p>Years of Experience</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>100+</h3>
+            <p>Projects Delivered</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>AI</h3>
+            <p>Innovation Focus</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Global</h3>
+            <p>Technology Vision</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Areas</h2>
+        <p>Solutions designed for the future of infrastructure, digital transformation, and intelligent operations.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Technology">
+          <div class="project-content">
+            <h3>Digital Transformation</h3>
+            <p>Helping organizations modernize operations through automation, cloud platforms, and data-driven strategies.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Construction">
+          <div class="project-content">
+            <h3>Smart Construction</h3>
+            <p>Innovative construction management integrating sustainability, BIM, and smart infrastructure technologies.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80" alt="AI">
+          <div class="project-content">
+            <h3>Artificial Intelligence</h3>
+            <p>AI-powered business intelligence, predictive analytics, and intelligent automation solutions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Build the Future with EDGE</h2>
+        <p>
+          Ready to transform your projects and business operations with engineering, AI, and technology-driven solutions?
+        </p>
+        <a href="mailto:info@edge.com" class="btn btn-primary">Contact EDGE</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 EDGE | Transforming Projects</p>
+    </div>
+  </footer>
+
+</body>
+</html>
